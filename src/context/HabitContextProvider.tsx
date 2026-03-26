@@ -2,15 +2,21 @@ import { createContext, useCallback, useMemo } from 'react';
 import type { Habit } from '../types';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
-interface HabitContextType {
+export interface HabitContextType {
    habits: Habit[];
-   addHabit: (habit: Habit) => void;
+   addHabit: (inputHabit: Pick<Habit, 'name' | 'emoji'>) => void;
    updateHabit: (habit: Habit) => void;
    removeHabit: (id: string) => void;
    toggleToday: (id: string) => void;
 }
 
-export const HabitContext = createContext<HabitContextType | null>(null);
+export const HabitContext = createContext<HabitContextType>({
+   habits: [],
+   addHabit: (inputHabit: Pick<Habit, 'name' | 'emoji'>) => inputHabit,
+   updateHabit: (habit: Habit) => habit,
+   removeHabit: (id: string) => id,
+   toggleToday: (id: string) => id,
+});
 
 export default function HabitContextProvider({
    children,
@@ -20,8 +26,14 @@ export default function HabitContextProvider({
    const [habits, setHabits] = useLocalStorage<Habit[]>('habits', []);
 
    const addHabit = useCallback(
-      (habit: Habit) => {
-         setHabits((prev) => [...prev, habit]);
+      ({ name, emoji }: Pick<Habit, 'name' | 'emoji'>) => {
+         const id = crypto.randomUUID();
+         const completedDates: Habit['completedDates'] = [];
+         const createdAt: Habit['createdAt'] = new Date().toISOString();
+         setHabits((prev) => [
+            ...prev,
+            { id, name, emoji, createdAt, completedDates },
+         ]);
       },
       [setHabits]
    );
