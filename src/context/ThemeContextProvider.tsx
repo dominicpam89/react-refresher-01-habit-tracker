@@ -44,7 +44,7 @@ const reducer = (
          newTheme = action.payload;
          break;
       case 'TOGGLE':
-         state.theme === 'dark' ? (newTheme = 'dark') : (newTheme = 'light');
+         state.theme === 'dark' ? (newTheme = 'light') : (newTheme = 'dark');
          break;
    }
    return { theme: newTheme };
