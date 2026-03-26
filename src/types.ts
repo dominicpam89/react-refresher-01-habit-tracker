@@ -23,6 +23,13 @@ export type ThemeActionType =
    | { type: 'DARK' }
    | { type: 'SYSTEM'; payload: ThemeType };
 
+/**
+ * Type definition for the Theme context.
+ * Provides the current theme state and a dispatch function to update it.
+ *
+ * @property {ThemeStateType} state - The current theme state
+ * @property {React.ActionDispatch<[action: ThemeActionType]>} dispatch - Function to dispatch theme state updates
+ */
 export type ThemeContextType = {
    state: ThemeStateType;
    dispatch: React.ActionDispatch<[action: ThemeActionType]>;
