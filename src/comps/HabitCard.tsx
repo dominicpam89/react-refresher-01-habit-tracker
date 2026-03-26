@@ -18,14 +18,22 @@ export default function HabitCard({ habit, onToggle, onDelete }: Props) {
       d.setDate(d.getDate() - (6 - i));
       return d.toISOString().split('T')[0];
    });
+
    return (
-      <div className="">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow p-5 border border-gray-100 dark:border-gray-700">
          <HabitHeader habit={habit} streak={streak} />
-         <div className="week-dots">
+         <div className="flex gap-1 mt-4">
             {last7.map((date) => (
                <div
                   key={date}
-                  className={`dot ${habit.completedDates.includes(date) ? 'filled' : ''}`}
+                  className={`
+              w-8 h-8 rounded-full border transition-colors
+              ${
+                 habit.completedDates.includes(date)
+                    ? 'bg-primary-500 border-primary-500 dark:bg-primary-400 dark:border-primary-400'
+                    : 'bg-gray-100 border-gray-300 dark:bg-gray-700 dark:border-gray-600'
+              }
+            `}
                   title={date}
                />
             ))}
@@ -47,10 +55,14 @@ interface HabitHeaderProps {
 
 function HabitHeader({ habit, streak }: HabitHeaderProps) {
    return (
-      <div className="habit-header">
-         <span className="habit-emoji">{habit.emoji}</span>
-         <span className="habit-name">{habit.name}</span>
-         <span className="streak">🔥 {streak}</span>
+      <div className="flex items-center gap-2">
+         <span className="text-2xl">{habit.emoji}</span>
+         <span className="text-lg font-semibold text-gray-800 dark:text-gray-100">
+            {habit.name}
+         </span>
+         <span className="ml-auto text-sm font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 rounded-full px-2 py-0.5">
+            🔥 {streak}
+         </span>
       </div>
    );
 }
@@ -71,15 +83,26 @@ function HabitActions({
    const buttonRef = useRef<HTMLButtonElement>(null);
 
    return (
-      <div className="habit-actions">
+      <div className="flex justify-between items-center gap-3 mt-4">
          <button
             ref={buttonRef}
             onClick={() => onToggle(habit.id)}
-            className={`toggle-btn ${isTodayDone ? 'done' : ''}`}
+            className={`
+          flex-1 py-2 px-3 rounded-lg font-medium transition-colors
+          ${
+             isTodayDone
+                ? 'bg-green-500 text-white hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700'
+                : 'bg-primary-500 text-white hover:bg-primary-600 dark:bg-primary-600 dark:hover:bg-primary-700'
+          }
+        `}
          >
             {isTodayDone ? '✓ Done today' : 'Mark done'}
          </button>
-         <button onClick={() => onDelete(habit.id)} className="delete-btn">
+         <button
+            onClick={() => onDelete(habit.id)}
+            className="p-2 rounded-lg text-red-500 hover:text-red-700 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/30 transition-colors"
+            aria-label="Delete habit"
+         >
             ✕
          </button>
       </div>
