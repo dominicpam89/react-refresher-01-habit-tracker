@@ -15,5 +15,15 @@ export type Habit = {
    createdAt: string;
 };
 
-export type ThemeState = { theme: 'light' | 'dark' };
-export type ThemeAction = { type: 'TOGGLE' };
+type ThemeType = 'light' | 'dark' | 'system';
+export type ThemeStateType = { theme: ThemeType };
+export type ThemeActionType =
+   | { type: 'TOGGLE' }
+   | { type: 'LIGHT' }
+   | { type: 'DARK' }
+   | { type: 'SYSTEM'; payload: ThemeType };
+
+export type ThemeContextType = {
+   state: ThemeStateType;
+   dispatch: React.ActionDispatch<[action: ThemeActionType]>;
+};
