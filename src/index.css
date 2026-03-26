@@ -1,1 +1,107 @@
 @import 'tailwindcss';
+
+@theme {
+   /* ===== Primary Color (Teal) ===== */
+   --color-primary: #2c9e8b; /* base primary */
+   --color-primary-50: #e6f4f1;
+   --color-primary-100: #cce9e4;
+   --color-primary-200: #99d3c9;
+   --color-primary-300: #66bdae;
+   --color-primary-400: #33a793;
+   --color-primary-500: #2c9e8b; /* same as base */
+   --color-primary-600: #238e7c;
+   --color-primary-700: #1a6b5d;
+   --color-primary-800: #12493f;
+   --color-primary-900: #092620;
+   --color-primary-950: #051311;
+
+   /* ===== Secondary Color (Blue) ===== */
+   --color-secondary: #3b82f6;
+   --color-secondary-50: #eff6ff;
+   --color-secondary-100: #dbeafe;
+   --color-secondary-200: #bfdbfe;
+   --color-secondary-300: #93c5fd;
+   --color-secondary-400: #60a5fa;
+   --color-secondary-500: #3b82f6;
+   --color-secondary-600: #2563eb;
+   --color-secondary-700: #1d4ed8;
+   --color-secondary-800: #1e40af;
+   --color-secondary-900: #1e3a8a;
+   --color-secondary-950: #172554;
+
+   /* ===== Accent Color (Amber) ===== */
+   --color-accent: #f59e0b;
+   --color-accent-50: #fffbeb;
+   --color-accent-100: #fef3c7;
+   --color-accent-200: #fde68a;
+   --color-accent-300: #fcd34d;
+   --color-accent-400: #fbbf24;
+   --color-accent-500: #f59e0b;
+   --color-accent-600: #d97706;
+   --color-accent-700: #b45309;
+   --color-accent-800: #92400e;
+   --color-accent-900: #78350f;
+   --color-accent-950: #451a03;
+
+   /* ===== Success / Green ===== */
+   --color-success: #10b981;
+   --color-success-50: #ecfdf5;
+   --color-success-100: #d1fae5;
+   --color-success-200: #a7f3d0;
+   --color-success-300: #6ee7b7;
+   --color-success-400: #34d399;
+   --color-success-500: #10b981;
+   --color-success-600: #059669;
+   --color-success-700: #047857;
+   --color-success-800: #065f46;
+   --color-success-900: #064e3b;
+   --color-success-950: #022c22;
+
+   /* ===== Warning / Yellow ===== */
+   --color-warning: #facc15;
+   --color-warning-50: #fefce8;
+   --color-warning-100: #fef9c3;
+   --color-warning-200: #fef08a;
+   --color-warning-300: #fde047;
+   --color-warning-400: #facc15;
+   --color-warning-500: #eab308;
+   --color-warning-600: #ca8a04;
+   --color-warning-700: #a16207;
+   --color-warning-800: #854d0e;
+   --color-warning-900: #713f12;
+   --color-warning-950: #422006;
+
+   /* ===== Error / Red ===== */
+   --color-error: #ef4444;
+   --color-error-50: #fef2f2;
+   --color-error-100: #fee2e2;
+   --color-error-200: #fecaca;
+   --color-error-300: #fca5a5;
+   --color-error-400: #f87171;
+   --color-error-500: #ef4444;
+   --color-error-600: #dc2626;
+   --color-error-700: #b91c1c;
+   --color-error-800: #991b1b;
+   --color-error-900: #7f1a1a;
+   --color-error-950: #450a0a;
+
+   /* ===== Neutral Grays ===== */
+   --color-gray-50: #f9fafb;
+   --color-gray-100: #f3f4f6;
+   --color-gray-200: #e5e7eb;
+   --color-gray-300: #d1d5db;
+   --color-gray-400: #9ca3af;
+   --color-gray-500: #6b7280;
+   --color-gray-600: #4b5563;
+   --color-gray-700: #374151;
+   --color-gray-800: #1f2937;
+   --color-gray-900: #111827;
+   --color-gray-950: #030712;
+
+   /* ===== Semantic Aliases ===== */
+   --color-brand: var(--color-primary);
+   --color-body-bg: var(--color-gray-50);
+   --color-text-primary: var(--color-gray-900);
+   --color-text-secondary: var(--color-gray-600);
+   --color-border: var(--color-gray-200);
+}
